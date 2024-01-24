@@ -7,14 +7,14 @@ class Solution {
 public:
     vector<vector<int>> groupThePeople(vector<int> &groupSizes) {
         vector<vector<int>> res;
-        unordered_map<int, vector<int>> groupsMap;
+        vector<vector<int>> groupsMap(500);
 
         for (int userId = 0; userId < groupSizes.size(); ++userId) {
             int groupSize = groupSizes[userId];
-            groupsMap[groupSize].push_back(userId);
+            groupsMap[groupSize].emplace_back(userId);
 
             if (groupsMap[groupSize].size() == groupSize) {
-                res.push_back(groupsMap[groupSize]);
+                res.emplace_back(groupsMap[groupSize].begin(), groupsMap[groupSize].end());
                 groupsMap[groupSize].clear();
             }
         }
