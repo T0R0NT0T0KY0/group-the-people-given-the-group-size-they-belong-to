@@ -1,18 +1,20 @@
 function groupThePeople(groupSizes: number[]): number[][] {
     const res: number[][] = [];
-    const groupsMap = new Map<number, number[]>();
+    const groupsMap: number[][] = Array.from({length: 500}, () => []);
 
-    groupSizes.forEach((groupSize, userId) => {
-        const group = groupsMap.get(groupSize) || [];
+    for (let userId = 0; userId < groupSizes.length; userId++) {
+        const groupSize = groupSizes[userId];
+
+        const group = groupsMap[groupSize];
         group.push(userId);
 
         if (group.length === groupSize) {
             res.push(group);
-            groupsMap.delete(groupSize);
+            groupsMap[groupSize] = [];
         } else {
-            groupsMap.set(groupSize, group);
+            groupsMap[groupSize] = group;
         }
-    })
+    }
 
     return res;
 };
