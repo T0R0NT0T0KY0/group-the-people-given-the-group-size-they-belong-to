@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.27)
+project(group_the_people_given_the_group_size_they_belong_to)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(group_the_people_given_the_group_size_they_belong_to cpp/main.cpp
+)
